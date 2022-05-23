@@ -16,6 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           go version
+          go get -u golang.org/x/lint/golint
       - name: Build
         run: go build .
       - name: Vet'n'Lint
