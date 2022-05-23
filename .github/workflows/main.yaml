@@ -1,0 +1,24 @@
+name: my-flow
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.17'
+      - name: Install dependencies
+        run: |
+          go version
+      - name: Build
+        run: go build .
+      - name: Vet'n'Lint
+        run: |
+          go vet .
+          golint .
